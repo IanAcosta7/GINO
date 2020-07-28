@@ -1,10 +1,14 @@
+
+var AdminPanel;
+
 export default class Login extends React.Component {
-    
+  
     constructor(props) {
         super(props);
         this.state = {
             user: "",
-            password: ""
+            password: "",
+            adminLogged: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -55,17 +59,31 @@ export default class Login extends React.Component {
             headers: headers,
         });
     
+        // fetch(req)
+        //     .then(res => {
+        //         if (res.ok) {
+        //             return res.text();
+        //         }
+        //     })
+        //     .then(html => {
+        //         const parser = new DOMParser();
+        //         const doc = parser.parseFromString(html, 'text/html');
+    
+        //         document.write(html);
+        //     })
+        //     .catch(err => console.error(err));
+
         fetch(req)
             .then(res => {
                 if (res.ok) {
                     return res.text();
                 }
             })
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-    
-                document.write(html);
+            .then(js => {
+                AdminPanel = eval(js);
+                this.setState({
+                    adminLogged: true
+                });             
             })
             .catch(err => console.error(err));
     }
@@ -78,6 +96,12 @@ export default class Login extends React.Component {
                 <input type="password" name="password" id="password" placeHolder="Contraseña" onChange={this.handleChange}/>
                 <br/>
                 <button type="button" onClick={this.login}>Iniciar Sesión</button>
+
+                {
+                    this.state.adminLogged ?
+                    <AdminPanel></AdminPanel> :
+                    <div>hi</div>
+                }
             </form>
         );
     }

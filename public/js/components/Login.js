@@ -1,4 +1,4 @@
-var _jsxFileName = "src\\components\\Login.js";
+var _jsxFileName = "src\\public\\js\\components\\Login.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -10,6 +10,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var AdminPanel;
+
 var Login = function (_React$Component) {
     _inherits(Login, _React$Component);
 
@@ -20,7 +22,8 @@ var Login = function (_React$Component) {
 
         _this.state = {
             user: "",
-            password: ""
+            password: "",
+            adminLogged: false
         };
 
         _this.handleChange = _this.handleChange.bind(_this);
@@ -64,6 +67,8 @@ var Login = function (_React$Component) {
     }, {
         key: "reqAdmin",
         value: function reqAdmin(token) {
+            var _this3 = this;
+
             // Request al index de admin
             var headers = new Headers();
             headers.append('Authorization', "Bearer " + token);
@@ -74,15 +79,29 @@ var Login = function (_React$Component) {
                 headers: headers
             });
 
+            // fetch(req)
+            //     .then(res => {
+            //         if (res.ok) {
+            //             return res.text();
+            //         }
+            //     })
+            //     .then(html => {
+            //         const parser = new DOMParser();
+            //         const doc = parser.parseFromString(html, 'text/html');
+
+            //         document.write(html);
+            //     })
+            //     .catch(err => console.error(err));
+
             fetch(req).then(function (res) {
                 if (res.ok) {
                     return res.text();
                 }
-            }).then(function (html) {
-                var parser = new DOMParser();
-                var doc = parser.parseFromString(html, 'text/html');
-
-                document.write(html);
+            }).then(function (js) {
+                AdminPanel = eval(js);
+                _this3.setState({
+                    adminLogged: true
+                });
             }).catch(function (err) {
                 return console.error(err);
             });
@@ -95,33 +114,33 @@ var Login = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 75
+                        lineNumber: 93
                     },
                     __self: this
                 },
                 React.createElement("input", { name: "user", id: "user", placeHolder: "Nombre de usuario", value: this.state.user, onChange: this.handleChange, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 76
+                        lineNumber: 94
                     },
                     __self: this
                 }),
                 React.createElement("br", {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 77
+                        lineNumber: 95
                     },
                     __self: this
                 }),
                 React.createElement("input", { type: "password", name: "password", id: "password", placeHolder: "Contrase\xF1a", onChange: this.handleChange, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 78
+                        lineNumber: 96
                     },
                     __self: this
                 }),
                 React.createElement("br", {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 79
+                        lineNumber: 97
                     },
                     __self: this
                 }),
@@ -129,11 +148,28 @@ var Login = function (_React$Component) {
                     "button",
                     { type: "button", onClick: this.login, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 80
+                            lineNumber: 98
                         },
                         __self: this
                     },
                     "Iniciar Sesi\xF3n"
+                ),
+                this.state.adminLogged ? React.createElement(AdminPanel, {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 102
+                    },
+                    __self: this
+                }) : React.createElement(
+                    "div",
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 103
+                        },
+                        __self: this
+                    },
+                    "hi"
                 )
             );
         }

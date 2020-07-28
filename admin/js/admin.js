@@ -1,4 +1,4 @@
-var _jsxFileName = 'src\\public\\js\\main.js';
+var _jsxFileName = "src\\admin\\js\\admin.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -8,54 +8,43 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-import Navbar from './components/Navbar.js';
-import Login from './components/Login.js';
+var AdminPanel = function (_React$Component) {
+    _inherits(AdminPanel, _React$Component);
 
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
+    function AdminPanel() {
+        _classCallCheck(this, AdminPanel);
 
-    function App() {
-        _classCallCheck(this, App);
-
-        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (AdminPanel.__proto__ || Object.getPrototypeOf(AdminPanel)).apply(this, arguments));
     }
 
-    _createClass(App, [{
-        key: 'render',
+    _createClass(AdminPanel, [{
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                React.Fragment,
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 7
+                        lineNumber: 4
                     },
                     __self: this
                 },
-                React.createElement(Navbar, { title: 'Main Page', __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 8
+                React.createElement(
+                    "div",
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 5
+                        },
+                        __self: this
                     },
-                    __self: this
-                }),
-                React.createElement(Login, {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 10
-                    },
-                    __self: this
-                })
+                    "ADMIN!"
+                )
             );
         }
     }]);
 
-    return App;
+    return AdminPanel;
 }(React.Component);
 
-ReactDOM.render(React.createElement(App, {
-    __source: {
-        fileName: _jsxFileName,
-        lineNumber: 17
-    },
-    __self: this
-}), document.getElementById('root'));
+AdminPanel;
