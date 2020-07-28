@@ -23,7 +23,10 @@ app.post('/login', (req, res) => {
                         token = jwt.sign({
                             user
                         }, process.env.JWT_SEED);
-                        return res.status(200).send({ token }); // OK
+
+                        res.setHeader('Set-Cookie', [`jwt=${token}`]);
+                        res.writeHead(200, { 'Content-Type': 'text/plain' });
+                        res.end();
                     }
                     else
                         return res.status(403).send(); // FORBIDDEN 

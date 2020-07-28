@@ -1,4 +1,4 @@
-var _jsxFileName = "src\\public\\js\\components\\Login.js";
+var _jsxFileName = "src\\js\\components\\Login.js";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -10,8 +10,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AdminPanel;
-
 var Login = function (_React$Component) {
     _inherits(Login, _React$Component);
 
@@ -22,8 +20,7 @@ var Login = function (_React$Component) {
 
         _this.state = {
             user: "",
-            password: "",
-            adminLogged: false
+            password: ""
         };
 
         _this.handleChange = _this.handleChange.bind(_this);
@@ -55,57 +52,39 @@ var Login = function (_React$Component) {
             });
 
             fetch(req).then(function (res) {
-                if (res.ok) return res.json();
-                throw new Error("Status " + res.status);
-            }).then(function (jsonData) {
-                _this2.reqAdmin(jsonData.token);
+                if (res.ok) _this2.props.verifyLog();else throw new Error("Status " + res.status);
             }).catch(function (err) {
                 // TODO LOAD ERROR PAGE
                 console.error(err);
             });
         }
-    }, {
-        key: "reqAdmin",
-        value: function reqAdmin(token) {
-            var _this3 = this;
 
-            // Request al index de admin
-            var headers = new Headers();
-            headers.append('Authorization', "Bearer " + token);
+        // reqAdmin(token) {
+        //     // Request al index de admin
+        //     let headers = new Headers();
+        //     headers.append('Authorization', `Bearer ${token}`);
 
-            var req = new Request(window.location.origin, {
-                method: 'GET',
-                credentials: 'same-origin',
-                headers: headers
-            });
+        //     const req = new Request(window.location.origin, {
+        //         method: 'GET',
+        //         credentials: 'same-origin',
+        //         headers: headers,
+        //     });
 
-            // fetch(req)
-            //     .then(res => {
-            //         if (res.ok) {
-            //             return res.text();
-            //         }
-            //     })
-            //     .then(html => {
-            //         const parser = new DOMParser();
-            //         const doc = parser.parseFromString(html, 'text/html');
+        //     fetch(req)
+        //         .then(res => {
+        //             if (res.ok) {
+        //                 return res.text();
+        //             }
+        //         })
+        //         .then(html => {
+        //             const parser = new DOMParser();
+        //             const doc = parser.parseFromString(html, 'text/html');
 
-            //         document.write(html);
-            //     })
-            //     .catch(err => console.error(err));
+        //             document.write(html);
+        //         })
+        //         .catch(err => console.error(err));
+        // }
 
-            fetch(req).then(function (res) {
-                if (res.ok) {
-                    return res.text();
-                }
-            }).then(function (js) {
-                AdminPanel = eval(js);
-                _this3.setState({
-                    adminLogged: true
-                });
-            }).catch(function (err) {
-                return console.error(err);
-            });
-        }
     }, {
         key: "render",
         value: function render() {
@@ -114,33 +93,33 @@ var Login = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 93
+                        lineNumber: 73
                     },
                     __self: this
                 },
                 React.createElement("input", { name: "user", id: "user", placeHolder: "Nombre de usuario", value: this.state.user, onChange: this.handleChange, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 94
+                        lineNumber: 74
                     },
                     __self: this
                 }),
                 React.createElement("br", {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 95
+                        lineNumber: 75
                     },
                     __self: this
                 }),
                 React.createElement("input", { type: "password", name: "password", id: "password", placeHolder: "Contrase\xF1a", onChange: this.handleChange, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 96
+                        lineNumber: 76
                     },
                     __self: this
                 }),
                 React.createElement("br", {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 97
+                        lineNumber: 77
                     },
                     __self: this
                 }),
@@ -148,28 +127,11 @@ var Login = function (_React$Component) {
                     "button",
                     { type: "button", onClick: this.login, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 98
+                            lineNumber: 78
                         },
                         __self: this
                     },
                     "Iniciar Sesi\xF3n"
-                ),
-                this.state.adminLogged ? React.createElement(AdminPanel, {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 102
-                    },
-                    __self: this
-                }) : React.createElement(
-                    "div",
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 103
-                        },
-                        __self: this
-                    },
-                    "hi"
                 )
             );
         }
