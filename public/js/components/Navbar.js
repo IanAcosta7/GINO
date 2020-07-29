@@ -25,6 +25,7 @@ var Navbar = function (_React$Component) {
         value: function closeSession() {
             document.cookie = "jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             this.props.changePage('About');
+            this.props.changeAdminLog(false);
         }
     }, {
         key: "render",
@@ -33,7 +34,7 @@ var Navbar = function (_React$Component) {
                 "header",
                 { "class": "header", __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 15
+                        lineNumber: 16
                     },
                     __self: this
                 },
@@ -41,7 +42,7 @@ var Navbar = function (_React$Component) {
                     "div",
                     { "class": "header-content", __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 16
+                            lineNumber: 17
                         },
                         __self: this
                     },
@@ -49,7 +50,7 @@ var Navbar = function (_React$Component) {
                         "div",
                         { "class": "header-logo", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 17
+                                lineNumber: 18
                             },
                             __self: this
                         },
@@ -58,7 +59,7 @@ var Navbar = function (_React$Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 18
+                                    lineNumber: 19
                                 },
                                 __self: this
                             },
@@ -69,7 +70,7 @@ var Navbar = function (_React$Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 19
+                                    lineNumber: 20
                                 },
                                 __self: this
                             },
@@ -80,7 +81,7 @@ var Navbar = function (_React$Component) {
                         "div",
                         { "class": "header-menu", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 22
+                                lineNumber: 23
                             },
                             __self: this
                         },
@@ -88,7 +89,7 @@ var Navbar = function (_React$Component) {
                             "button",
                             { "class": "header-btn header-menu-btn", disabled: true, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 23
+                                    lineNumber: 24
                                 },
                                 __self: this
                             },
@@ -98,7 +99,7 @@ var Navbar = function (_React$Component) {
                             "button",
                             { "class": "header-btn header-menu-btn", __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 24
+                                    lineNumber: 25
                                 },
                                 __self: this
                             },
@@ -109,7 +110,7 @@ var Navbar = function (_React$Component) {
                         "div",
                         { "class": "header-opt", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 27
+                                lineNumber: 28
                             },
                             __self: this
                         },
@@ -117,7 +118,7 @@ var Navbar = function (_React$Component) {
                             "button",
                             { "class": "header-btn header-close-btn", onClick: this.closeSession, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 28
+                                    lineNumber: 29
                                 },
                                 __self: this
                             },

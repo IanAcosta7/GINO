@@ -27,6 +27,7 @@ var App = function (_React$Component) {
 
         _this.verifyLog = _this.verifyLog.bind(_this);
         _this.changePage = _this.changePage.bind(_this);
+        _this.changeAdminLog = _this.changeAdminLog.bind(_this);
         return _this;
     }
 
@@ -44,6 +45,11 @@ var App = function (_React$Component) {
             };
 
             this.setState({ page: pages[page] });
+        }
+    }, {
+        key: 'changeAdminLog',
+        value: function changeAdminLog(value) {
+            this.setState({ isAdminLogged: value });
         }
     }, {
         key: 'verifyLog',
@@ -82,19 +88,19 @@ var App = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 60
+                        lineNumber: 65
                     },
                     __self: this
                 },
-                React.createElement(Navbar, { changePage: this.changePage, isAdminLogged: this.state.isAdminLogged, __source: {
+                React.createElement(Navbar, { changePage: this.changePage, changeAdminLog: this.changeAdminLog, isAdminLogged: this.state.isAdminLogged, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 61
+                        lineNumber: 66
                     },
                     __self: this
                 }),
-                React.createElement(this.state.page, { verifyLog: this.verifyLog, __source: {
+                React.createElement(this.state.page, { changePage: this.changePage, verifyLog: this.verifyLog, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 63
+                        lineNumber: 68
                     },
                     __self: this
                 })
@@ -108,7 +114,7 @@ var App = function (_React$Component) {
 ReactDOM.render(React.createElement(App, {
     __source: {
         fileName: _jsxFileName,
-        lineNumber: 70
+        lineNumber: 75
     },
     __self: this
 }), document.getElementById('root'));

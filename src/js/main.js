@@ -13,6 +13,7 @@ class App extends React.Component {
 
         this.verifyLog = this.verifyLog.bind(this);
         this.changePage = this.changePage.bind(this);
+        this.changeAdminLog = this.changeAdminLog.bind(this);
     }
 
     componentDidMount() {
@@ -26,6 +27,10 @@ class App extends React.Component {
         }
 
         this.setState({ page: pages[page] });
+    }
+
+    changeAdminLog(value) {
+        this.setState({ isAdminLogged: value });
     }
 
     verifyLog() {
@@ -58,9 +63,9 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar changePage={this.changePage} isAdminLogged={this.state.isAdminLogged}/>
+                <Navbar changePage={this.changePage} changeAdminLog={this.changeAdminLog} isAdminLogged={this.state.isAdminLogged}/>
 
-                <this.state.page verifyLog={this.verifyLog}/>
+                <this.state.page changePage={this.changePage} verifyLog={this.verifyLog}/>
             </React.Fragment>
         );
     }

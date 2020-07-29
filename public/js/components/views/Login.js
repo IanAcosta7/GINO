@@ -52,7 +52,10 @@ var Login = function (_React$Component) {
             });
 
             fetch(req).then(function (res) {
-                if (res.ok) _this2.props.verifyLog();else throw new Error("Status " + res.status);
+                if (res.ok) {
+                    _this2.props.verifyLog();
+                    _this2.props.changePage('About');
+                } else throw new Error("Status " + res.status);
             }).catch(function (err) {
                 // TODO LOAD ERROR PAGE
                 console.error(err);
@@ -93,24 +96,11 @@ var Login = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 73
+                        lineNumber: 75
                     },
                     __self: this
                 },
                 React.createElement("input", { name: "user", id: "user", placeHolder: "Nombre de usuario", value: this.state.user, onChange: this.handleChange, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 74
-                    },
-                    __self: this
-                }),
-                React.createElement("br", {
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 75
-                    },
-                    __self: this
-                }),
-                React.createElement("input", { type: "password", name: "password", id: "password", placeHolder: "Contrase\xF1a", onChange: this.handleChange, __source: {
                         fileName: _jsxFileName,
                         lineNumber: 76
                     },
@@ -123,11 +113,24 @@ var Login = function (_React$Component) {
                     },
                     __self: this
                 }),
+                React.createElement("input", { type: "password", name: "password", id: "password", placeHolder: "Contrase\xF1a", onChange: this.handleChange, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 78
+                    },
+                    __self: this
+                }),
+                React.createElement("br", {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 79
+                    },
+                    __self: this
+                }),
                 React.createElement(
                     "button",
                     { type: "button", onClick: this.login, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 78
+                            lineNumber: 80
                         },
                         __self: this
                     },

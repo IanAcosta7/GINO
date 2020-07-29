@@ -31,8 +31,10 @@ export default class Login extends React.Component {
     
         fetch(req)
             .then(res => {
-                if (res.ok)
+                if (res.ok) {
                     this.props.verifyLog();
+                    this.props.changePage('About');
+                }
                 else
                     throw new Error(`Status ${res.status}`);
             })
