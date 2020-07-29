@@ -8,7 +8,7 @@ app.all('/auth', verifyToken, (req, res) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end();
     } else {
-        response.setHeader('WWW-Authenticate', 'realm="Login through the website"');
+        res.setHeader('WWW-Authenticate', 'realm="Login through the website"');
         res.writeHead(401, { 'Content-Type': 'text/plain' });
         res.end();
     }

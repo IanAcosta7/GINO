@@ -40,9 +40,7 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar title="Main Page"/>
-
-                { this.state.isAdminLogged && <h1>ADMIN!</h1> }
+                <Navbar isAdminLogged={this.state.isAdminLogged}/>
 
                 <Login verifyLog={this.verifyLog}/>
             </React.Fragment>

@@ -18,20 +18,109 @@ var Navbar = function (_React$Component) {
     }
 
     _createClass(Navbar, [{
+        key: "closeSession",
+        value: function closeSession() {
+            document.cookie = "jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+        }
+    }, {
         key: "render",
         value: function render() {
             return React.createElement(
-                "h1",
-                {
-                    __source: {
+                "header",
+                { "class": "header", __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 3
+                        lineNumber: 8
                     },
                     __self: this
                 },
-                "Hello World from ",
-                this.props.title,
-                "!"
+                React.createElement(
+                    "div",
+                    { "class": "header-content", __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 9
+                        },
+                        __self: this
+                    },
+                    React.createElement(
+                        "div",
+                        { "class": "header-logo", __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 10
+                            },
+                            __self: this
+                        },
+                        React.createElement(
+                            "a",
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 11
+                                },
+                                __self: this
+                            },
+                            "GINO"
+                        ),
+                        React.createElement(
+                            "small",
+                            {
+                                __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 12
+                                },
+                                __self: this
+                            },
+                            this.props.isAdminLogged ? 'Administrador' : ''
+                        )
+                    ),
+                    React.createElement(
+                        "div",
+                        { "class": "header-menu", __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 15
+                            },
+                            __self: this
+                        },
+                        React.createElement(
+                            "button",
+                            { "class": "header-btn header-menu-btn", disabled: true, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 16
+                                },
+                                __self: this
+                            },
+                            "Inicio"
+                        ),
+                        React.createElement(
+                            "button",
+                            { "class": "header-btn header-menu-btn", __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 17
+                                },
+                                __self: this
+                            },
+                            "Tienda"
+                        )
+                    ),
+                    React.createElement(
+                        "div",
+                        { "class": "header-opt", __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 20
+                            },
+                            __self: this
+                        },
+                        React.createElement(
+                            "button",
+                            { "class": "header-btn header-close-btn", onClick: this.closeSession, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 21
+                                },
+                                __self: this
+                            },
+                            "Cerrar Sesi\xF3n"
+                        )
+                    )
+                )
             );
         }
     }]);

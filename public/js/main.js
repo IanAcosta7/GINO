@@ -65,26 +65,15 @@ var App = function (_React$Component) {
                     },
                     __self: this
                 },
-                React.createElement(Navbar, { title: 'Main Page', __source: {
+                React.createElement(Navbar, { isAdminLogged: this.state.isAdminLogged, __source: {
                         fileName: _jsxFileName,
                         lineNumber: 43
                     },
                     __self: this
                 }),
-                this.state.isAdminLogged && React.createElement(
-                    'h1',
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 45
-                        },
-                        __self: this
-                    },
-                    'ADMIN!'
-                ),
                 React.createElement(Login, { verifyLog: this.verifyLog, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 47
+                        lineNumber: 45
                     },
                     __self: this
                 })
@@ -98,7 +87,7 @@ var App = function (_React$Component) {
 ReactDOM.render(React.createElement(App, {
     __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 52
     },
     __self: this
 }), document.getElementById('root'));
