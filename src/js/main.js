@@ -29,24 +29,30 @@ class App extends React.Component {
     }
 
     verifyLog() {
-        const req = new Request(`${window.location.origin}/auth`, {
-            method: 'GET',
-            credentials: 'same-origin',
-        });
-    
-        fetch(req)
-            .then(res => {
-                this.setState({
-                    isAdminLogged: res.ok
-                });
+        const cookies = document.cookie.length > 0 ? document.cookie.split(' ') : null;
+        const jwtCookie = cookies != null ? cookies.filter(cookie => cookie.substr(0, 3) === 'jwt') : [];
 
-                if (!res.ok)
-                    console.log(`Status ${res.status}`);
-            })
-            .catch(err => {
-                // TODO LOAD ERROR PAGE
-                console.error(err)
+        // Si la cookie de JWT esta establecida se intenta el logueo
+        if (jwtCookie.length > 0) {
+            const req = new Request(`${window.location.origin}/auth`, {
+                method: 'GET',
+                credentials: 'same-origin',
             });
+        
+            fetch(req)
+                .then(res => {
+                    this.setState({
+                        isAdminLogged: res.ok
+                    });
+    
+                    if (!res.ok)
+                        console.log(`Status ${res.status}`);
+                })
+                .catch(err => {
+                    // TODO LOAD ERROR PAGE
+                    console.error(err)
+                });
+        }    
     }
 
     render() {

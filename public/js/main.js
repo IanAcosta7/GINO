@@ -50,21 +50,29 @@ var App = function (_React$Component) {
         value: function verifyLog() {
             var _this2 = this;
 
-            var req = new Request(window.location.origin + '/auth', {
-                method: 'GET',
-                credentials: 'same-origin'
-            });
+            var cookies = document.cookie.length > 0 ? document.cookie.split(' ') : null;
+            var jwtCookie = cookies != null ? cookies.filter(function (cookie) {
+                return cookie.substr(0, 3) === 'jwt';
+            }) : [];
 
-            fetch(req).then(function (res) {
-                _this2.setState({
-                    isAdminLogged: res.ok
+            // Si la cookie de JWT esta establecida se intenta el logueo
+            if (jwtCookie.length > 0) {
+                var req = new Request(window.location.origin + '/auth', {
+                    method: 'GET',
+                    credentials: 'same-origin'
                 });
 
-                if (!res.ok) console.log('Status ' + res.status);
-            }).catch(function (err) {
-                // TODO LOAD ERROR PAGE
-                console.error(err);
-            });
+                fetch(req).then(function (res) {
+                    _this2.setState({
+                        isAdminLogged: res.ok
+                    });
+
+                    if (!res.ok) console.log('Status ' + res.status);
+                }).catch(function (err) {
+                    // TODO LOAD ERROR PAGE
+                    console.error(err);
+                });
+            }
         }
     }, {
         key: 'render',
@@ -74,19 +82,19 @@ var App = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 54
+                        lineNumber: 60
                     },
                     __self: this
                 },
                 React.createElement(Navbar, { changePage: this.changePage, isAdminLogged: this.state.isAdminLogged, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 55
+                        lineNumber: 61
                     },
                     __self: this
                 }),
                 React.createElement(this.state.page, { verifyLog: this.verifyLog, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 57
+                        lineNumber: 63
                     },
                     __self: this
                 })
@@ -100,7 +108,7 @@ var App = function (_React$Component) {
 ReactDOM.render(React.createElement(App, {
     __source: {
         fileName: _jsxFileName,
-        lineNumber: 64
+        lineNumber: 70
     },
     __self: this
 }), document.getElementById('root'));
