@@ -22,7 +22,7 @@ var App = function (_React$Component) {
 
         _this.state = {
             isAdminLogged: false,
-            page: Login
+            page: About
         };
 
         _this.verifyLog = _this.verifyLog.bind(_this);
@@ -34,7 +34,13 @@ var App = function (_React$Component) {
     _createClass(App, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            this.checkPage();
             this.verifyLog();
+        }
+    }, {
+        key: 'checkPage',
+        value: function checkPage() {
+            if (document.location.pathname === '/admin') this.changePage('Login');
         }
     }, {
         key: 'changePage',
@@ -88,19 +94,24 @@ var App = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 65
+                        lineNumber: 71
                     },
                     __self: this
                 },
                 React.createElement(Navbar, { changePage: this.changePage, changeAdminLog: this.changeAdminLog, isAdminLogged: this.state.isAdminLogged, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 66
+                        lineNumber: 72
                     },
                     __self: this
                 }),
-                React.createElement(this.state.page, { changePage: this.changePage, verifyLog: this.verifyLog, __source: {
+                this.state.page === Login ? React.createElement(this.state.page, { changePage: this.changePage, verifyLog: this.verifyLog, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 68
+                        lineNumber: 76
+                    },
+                    __self: this
+                }) : React.createElement(this.state.page, { changePage: this.changePage, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 77
                     },
                     __self: this
                 })
@@ -114,7 +125,7 @@ var App = function (_React$Component) {
 ReactDOM.render(React.createElement(App, {
     __source: {
         fileName: _jsxFileName,
-        lineNumber: 75
+        lineNumber: 85
     },
     __self: this
 }), document.getElementById('root'));

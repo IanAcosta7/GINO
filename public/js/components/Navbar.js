@@ -106,11 +106,11 @@ var Navbar = function (_React$Component) {
                             "Tienda"
                         )
                     ),
-                    React.createElement(
+                    this.props.isAdminLogged && React.createElement(
                         "div",
                         { "class": "header-opt", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 28
+                                lineNumber: 31
                             },
                             __self: this
                         },
@@ -118,7 +118,7 @@ var Navbar = function (_React$Component) {
                             "button",
                             { "class": "header-btn header-close-btn", onClick: this.closeSession, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 29
+                                    lineNumber: 32
                                 },
                                 __self: this
                             },

@@ -25,9 +25,15 @@ export default class Navbar extends React.Component {
                         <button class="header-btn header-menu-btn">Tienda</button>
                     </div>
 
-                    <div class="header-opt">
-                        <button class="header-btn header-close-btn" onClick={this.closeSession}>Cerrar Sesión</button>
-                    </div>
+                    {
+                        this.props.isAdminLogged && 
+                        (
+                            <div class="header-opt">
+                                <button class="header-btn header-close-btn" onClick={this.closeSession}>Cerrar Sesión</button>
+                            </div>
+                        )
+                    }
+                    
                 </div>
             </header>
         );

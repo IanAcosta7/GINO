@@ -8,7 +8,7 @@ class App extends React.Component {
         super(props);
         this.state = {
             isAdminLogged: false,
-            page: Login
+            page: About
         };
 
         this.verifyLog = this.verifyLog.bind(this);
@@ -17,7 +17,13 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        this.checkPage();
         this.verifyLog();
+    }
+
+    checkPage() {
+        if (document.location.pathname === '/admin')
+            this.changePage('Login');
     }
 
     changePage(page) {
@@ -65,7 +71,11 @@ class App extends React.Component {
             <React.Fragment>
                 <Navbar changePage={this.changePage} changeAdminLog={this.changeAdminLog} isAdminLogged={this.state.isAdminLogged}/>
 
-                <this.state.page changePage={this.changePage} verifyLog={this.verifyLog}/>
+                {
+                    this.state.page === Login ?
+                    <this.state.page changePage={this.changePage} verifyLog={this.verifyLog}/> :
+                    <this.state.page changePage={this.changePage}/>
+                }
             </React.Fragment>
         );
     }

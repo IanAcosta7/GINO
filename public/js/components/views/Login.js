@@ -55,6 +55,7 @@ var Login = function (_React$Component) {
                 if (res.ok) {
                     _this2.props.verifyLog();
                     _this2.props.changePage('About');
+                    document.location.pathname = '/';
                 } else throw new Error("Status " + res.status);
             }).catch(function (err) {
                 // TODO LOAD ERROR PAGE
@@ -96,33 +97,33 @@ var Login = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 75
+                        lineNumber: 76
                     },
                     __self: this
                 },
                 React.createElement("input", { name: "user", id: "user", placeHolder: "Nombre de usuario", value: this.state.user, onChange: this.handleChange, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 76
+                        lineNumber: 77
                     },
                     __self: this
                 }),
                 React.createElement("br", {
                     __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 77
-                    },
-                    __self: this
-                }),
-                React.createElement("input", { type: "password", name: "password", id: "password", placeHolder: "Contrase\xF1a", onChange: this.handleChange, __source: {
                         fileName: _jsxFileName,
                         lineNumber: 78
                     },
                     __self: this
                 }),
+                React.createElement("input", { type: "password", name: "password", id: "password", placeHolder: "Contrase\xF1a", onChange: this.handleChange, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 79
+                    },
+                    __self: this
+                }),
                 React.createElement("br", {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 79
+                        lineNumber: 80
                     },
                     __self: this
                 }),
@@ -130,7 +131,7 @@ var Login = function (_React$Component) {
                     "button",
                     { type: "button", onClick: this.login, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 80
+                            lineNumber: 81
                         },
                         __self: this
                     },

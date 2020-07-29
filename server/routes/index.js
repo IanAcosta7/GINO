@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 
 app.use(require('./login'));
+app.use(require('./admin'));
 app.use(require('./auth'));
 
 // Escucha todos los métodos HTTP
