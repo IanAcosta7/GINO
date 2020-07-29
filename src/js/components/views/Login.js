@@ -44,42 +44,18 @@ export default class Login extends React.Component {
                 console.error(err)
             });
     }
-
-    // reqAdmin(token) {
-    //     // Request al index de admin
-    //     let headers = new Headers();
-    //     headers.append('Authorization', `Bearer ${token}`);
-    
-    //     const req = new Request(window.location.origin, {
-    //         method: 'GET',
-    //         credentials: 'same-origin',
-    //         headers: headers,
-    //     });
-    
-    //     fetch(req)
-    //         .then(res => {
-    //             if (res.ok) {
-    //                 return res.text();
-    //             }
-    //         })
-    //         .then(html => {
-    //             const parser = new DOMParser();
-    //             const doc = parser.parseFromString(html, 'text/html');
-    
-    //             document.write(html);
-    //         })
-    //         .catch(err => console.error(err));
-    // }
     
     render() {
         return (
-            <form>
-                <input name="user" id="user" placeHolder="Nombre de usuario" value={this.state.user} onChange={this.handleChange}/>
-                <br/>
-                <input type="password" name="password" id="password" placeHolder="Contraseña" onChange={this.handleChange}/>
-                <br/>
-                <button type="button" onClick={this.login}>Iniciar Sesión</button>
-            </form>
+            <main className="login">
+                <form className="login-form">
+                    <input className="form-input" name="user" id="user" placeHolder="Nombre de usuario" value={this.state.user} onChange={this.handleChange} autocorrect="off" autocapitalize="off" spellcheck="false"/>
+                    <br/>
+                    <input className="form-input" type="password" name="password" id="password" placeHolder="Contraseña" onChange={this.handleChange} autocorrect="off" autocapitalize="off" spellcheck="false"/>
+                    <br/>
+                    <button className="form-button" type="button" onClick={this.login}>Iniciar Sesion</button>
+                </form>
+            </main>
         );
     }
 }
