@@ -1,6 +1,13 @@
 export default class Navbar extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.closeSession = this.closeSession.bind(this);
+    }
+
     closeSession() {
         document.cookie = `jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+        this.props.changePage('About');
     }
 
     render() {

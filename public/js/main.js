@@ -9,7 +9,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 import Navbar from './components/Navbar.js';
-import Login from './components/Login.js';
+import Login from './components/views/Login.js';
+import About from './components/views/About.js';
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -20,10 +21,12 @@ var App = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
         _this.state = {
-            isAdminLogged: false
+            isAdminLogged: false,
+            page: Login
         };
 
         _this.verifyLog = _this.verifyLog.bind(_this);
+        _this.changePage = _this.changePage.bind(_this);
         return _this;
     }
 
@@ -31,6 +34,16 @@ var App = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.verifyLog();
+        }
+    }, {
+        key: 'changePage',
+        value: function changePage(page) {
+            var pages = {
+                Login: Login,
+                About: About
+            };
+
+            this.setState({ page: pages[page] });
         }
     }, {
         key: 'verifyLog',
@@ -61,19 +74,19 @@ var App = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 42
+                        lineNumber: 54
                     },
                     __self: this
                 },
-                React.createElement(Navbar, { isAdminLogged: this.state.isAdminLogged, __source: {
+                React.createElement(Navbar, { changePage: this.changePage, isAdminLogged: this.state.isAdminLogged, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 43
+                        lineNumber: 55
                     },
                     __self: this
                 }),
-                React.createElement(Login, { verifyLog: this.verifyLog, __source: {
+                React.createElement(this.state.page, { verifyLog: this.verifyLog, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 45
+                        lineNumber: 57
                     },
                     __self: this
                 })
@@ -87,7 +100,7 @@ var App = function (_React$Component) {
 ReactDOM.render(React.createElement(App, {
     __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 64
     },
     __self: this
 }), document.getElementById('root'));

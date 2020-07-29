@@ -1,19 +1,31 @@
 import Navbar from './components/Navbar.js';
-import Login from './components/Login.js';
+import Login from './components/views/Login.js';
+import About from './components/views/About.js'
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isAdminLogged: false
+            isAdminLogged: false,
+            page: Login
         };
 
         this.verifyLog = this.verifyLog.bind(this);
+        this.changePage = this.changePage.bind(this);
     }
 
     componentDidMount() {
         this.verifyLog();
+    }
+
+    changePage(page) {
+        const pages = {
+            Login,
+            About
+        }
+
+        this.setState({ page: pages[page] });
     }
 
     verifyLog() {
@@ -40,9 +52,9 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar isAdminLogged={this.state.isAdminLogged}/>
+                <Navbar changePage={this.changePage} isAdminLogged={this.state.isAdminLogged}/>
 
-                <Login verifyLog={this.verifyLog}/>
+                <this.state.page verifyLog={this.verifyLog}/>
             </React.Fragment>
         );
     }

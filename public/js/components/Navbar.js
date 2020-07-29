@@ -11,16 +11,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Navbar = function (_React$Component) {
     _inherits(Navbar, _React$Component);
 
-    function Navbar() {
+    function Navbar(props) {
         _classCallCheck(this, Navbar);
 
-        return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this, props));
+
+        _this.closeSession = _this.closeSession.bind(_this);
+        return _this;
     }
 
     _createClass(Navbar, [{
         key: "closeSession",
         value: function closeSession() {
             document.cookie = "jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            this.props.changePage('About');
         }
     }, {
         key: "render",
@@ -29,7 +33,7 @@ var Navbar = function (_React$Component) {
                 "header",
                 { "class": "header", __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 8
+                        lineNumber: 15
                     },
                     __self: this
                 },
@@ -37,7 +41,7 @@ var Navbar = function (_React$Component) {
                     "div",
                     { "class": "header-content", __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 9
+                            lineNumber: 16
                         },
                         __self: this
                     },
@@ -45,7 +49,7 @@ var Navbar = function (_React$Component) {
                         "div",
                         { "class": "header-logo", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 10
+                                lineNumber: 17
                             },
                             __self: this
                         },
@@ -54,7 +58,7 @@ var Navbar = function (_React$Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 11
+                                    lineNumber: 18
                                 },
                                 __self: this
                             },
@@ -65,7 +69,7 @@ var Navbar = function (_React$Component) {
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 12
+                                    lineNumber: 19
                                 },
                                 __self: this
                             },
@@ -76,7 +80,7 @@ var Navbar = function (_React$Component) {
                         "div",
                         { "class": "header-menu", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 15
+                                lineNumber: 22
                             },
                             __self: this
                         },
@@ -84,7 +88,7 @@ var Navbar = function (_React$Component) {
                             "button",
                             { "class": "header-btn header-menu-btn", disabled: true, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 16
+                                    lineNumber: 23
                                 },
                                 __self: this
                             },
@@ -94,7 +98,7 @@ var Navbar = function (_React$Component) {
                             "button",
                             { "class": "header-btn header-menu-btn", __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 17
+                                    lineNumber: 24
                                 },
                                 __self: this
                             },
@@ -105,7 +109,7 @@ var Navbar = function (_React$Component) {
                         "div",
                         { "class": "header-opt", __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 20
+                                lineNumber: 27
                             },
                             __self: this
                         },
@@ -113,7 +117,7 @@ var Navbar = function (_React$Component) {
                             "button",
                             { "class": "header-btn header-close-btn", onClick: this.closeSession, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 21
+                                    lineNumber: 28
                                 },
                                 __self: this
                             },
