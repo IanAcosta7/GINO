@@ -47,7 +47,7 @@ export default class Login extends React.Component {
     
     render() {
         return (
-            <main className="login">
+            <article className="login">
                 <form className="login-form">
                     <input className="form-input" name="user" id="user" placeHolder="Nombre de usuario" value={this.state.user} onChange={this.handleChange} autocorrect="off" autocapitalize="off" spellcheck="false"/>
                     <br/>
@@ -55,7 +55,7 @@ export default class Login extends React.Component {
                     <br/>
                     <button className="form-button" type="button" onClick={this.login}>Iniciar Sesion</button>
                 </form>
-            </main>
+            </article>
         );
     }
 }

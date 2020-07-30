@@ -66,7 +66,7 @@ var Login = function (_React$Component) {
         key: "render",
         value: function render() {
             return React.createElement(
-                "main",
+                "article",
                 { className: "login", __source: {
                         fileName: _jsxFileName,
                         lineNumber: 50

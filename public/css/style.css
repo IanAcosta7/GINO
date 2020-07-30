@@ -1,15 +1,23 @@
 
-* {
+*,
+*::after,
+*::before {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
 }
 
 body {
     font-family: sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 1.7;
+    height: 100vh;
+    box-sizing: border-box;
 }
 
 button {
@@ -22,9 +30,19 @@ button {
     font-family: sans-serif;
 }
 
+#root {
+    height: 100%;
+    
+    display: grid;
+    grid-template-rows: 1fr 15fr;
+}
+
 .header {
     /* background-image: linear-gradient(to right, black , rgba(0, 0, 0, 0) 40%), url(../img/header.jpg); */
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    position: sticky;
+    top: 0;
 
     /* clip-path: polygon(0vw 0vh, 100vw 50vh, 50vw 100vh, 0vw 50vh); */
 }
@@ -35,7 +53,7 @@ button {
     font-size: 150%;
 
     display: grid;
-    grid-template-columns:25% 50% 25%;
+    grid-template-columns: 1fr 4fr 1fr;
 }
 
 .header-menu {
@@ -43,8 +61,8 @@ button {
     margin: 0 auto;
 
     display: grid;
-    grid-template-columns: 48.5% 48.5%;
-    column-gap: 5%;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2vw;
 }
 
 .header-btn {
@@ -52,23 +70,28 @@ button {
 }
 
 .header-menu-btn {
-    border-radius: 0.2rem;
     text-transform: uppercase;
+    color: rgb(170, 170, 170);
 
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: bold;
+    transition: transform 200ms, color 200ms;
+    /* backface-visibility: hidden; */
 }
 
 .header-menu-btn:hover {
-    background-color: rgb(73, 73, 73);
+    color: rgb(255, 255, 255);
+    transform: scale(1.1);
 }
 
 .header-menu-btn:active {
-    background-color: rgb(133, 133, 133);
+    color: rgb(255, 255, 255);
+    transform: scale(1.05);
 }
 
 .header-menu-btn:disabled {
-    background-color: rgb(133, 133, 133)
+    border-bottom: medium solid white;
+    color: white;
 }
 
 .header-opt {
@@ -89,21 +112,22 @@ button {
 }
 
 .login {
-    display: grid;
-
-    column-gap: 10vw;
-    /* row-gap: 10vh; Se deberia cambiar para que ocupe el 100% */
-    grid-template-columns: repeat(3, 30vw);
-    grid-template-rows: repeat(3, 30vh); 
+    height: 100%;
+    position: relative
 }
 
 .login-form {
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     background-color: rgb(0, 0, 0, 0.75);
     border-radius: 0.5rem;
-    grid-row: 2 / 3;
-    grid-column: 2 / 3;
-    padding: 5% 5%;
-
+    box-shadow: 1rem 1rem 0.5rem gray;
+    padding: 1% 1%;
     display: grid;
 }
 
@@ -114,7 +138,7 @@ button {
     outline: none;
     background-color: transparent;
     text-align: center;
-    border-bottom: 2px solid white;
+    border-bottom: 0.2rem solid white;
 }
 
 .form-input::placeholder {
@@ -144,4 +168,8 @@ select:-webkit-autofill:focus {
     border-radius: 0.2rem;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+.main-content {
+    margin: 5vh 10vw;
 }
