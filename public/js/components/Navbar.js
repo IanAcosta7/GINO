@@ -1,4 +1,4 @@
-var _jsxFileName = "src\\js\\components\\Navbar.js";
+var _jsxFileName = 'src\\js\\components\\Navbar.js';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21,56 +21,165 @@ var Navbar = function (_React$Component) {
     }
 
     _createClass(Navbar, [{
-        key: "closeSession",
+        key: 'closeSession',
         value: function closeSession() {
-            document.cookie = "jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            document.cookie = 'jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
             this.props.changePage('About');
             this.props.changeAdminLog(false);
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
-            return React.createElement(
-                "header",
-                { "class": "header", __source: {
+            var _this2 = this;
+
+            var headerMenu = React.createElement(
+                React.Fragment,
+                {
+                    __source: {
                         fileName: _jsxFileName,
                         lineNumber: 16
                     },
                     __self: this
                 },
                 React.createElement(
-                    "nav",
-                    { "class": "header-content", __source: {
+                    'button',
+                    { className: 'header-btn header-menu-btn', onClick: function onClick(e) {
+                            return _this2.props.changePage('About', e);
+                        }, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 17
                         },
                         __self: this
                     },
+                    'Inicio'
+                ),
+                React.createElement(
+                    'button',
+                    { className: 'header-btn header-menu-btn', onClick: function onClick(e) {
+                            return _this2.props.changePage('Exposition', e);
+                        }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 18
+                        },
+                        __self: this
+                    },
+                    'Tienda'
+                )
+            );
+
+            if (this.props.page === 'About') {
+                headerMenu = React.createElement(
+                    React.Fragment,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 24
+                        },
+                        __self: this
+                    },
                     React.createElement(
-                        "div",
-                        { "class": "header-logo", __source: {
+                        'button',
+                        { className: 'header-btn header-menu-btn', onClick: function onClick(e) {
+                                return _this2.props.changePage('About', e);
+                            }, disabled: true, __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 18
+                                lineNumber: 25
+                            },
+                            __self: this
+                        },
+                        'Inicio'
+                    ),
+                    React.createElement(
+                        'button',
+                        { className: 'header-btn header-menu-btn', onClick: function onClick(e) {
+                                return _this2.props.changePage('Exposition', e);
+                            }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 26
+                            },
+                            __self: this
+                        },
+                        'Tienda'
+                    )
+                );
+            } else if (this.props.page === 'Exposition') {
+                headerMenu = React.createElement(
+                    React.Fragment,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 32
+                        },
+                        __self: this
+                    },
+                    React.createElement(
+                        'button',
+                        { className: 'header-btn header-menu-btn', onClick: function onClick(e) {
+                                return _this2.props.changePage('About', e);
+                            }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 33
+                            },
+                            __self: this
+                        },
+                        'Inicio'
+                    ),
+                    React.createElement(
+                        'button',
+                        { className: 'header-btn header-menu-btn', onClick: function onClick(e) {
+                                return _this2.props.changePage('Exposition', e);
+                            }, disabled: true, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 34
+                            },
+                            __self: this
+                        },
+                        'Tienda'
+                    )
+                );
+            }
+
+            return React.createElement(
+                'header',
+                { 'class': 'header', __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 40
+                    },
+                    __self: this
+                },
+                React.createElement(
+                    'nav',
+                    { 'class': 'header-content', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 41
+                        },
+                        __self: this
+                    },
+                    React.createElement(
+                        'div',
+                        { 'class': 'header-logo', __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 42
                             },
                             __self: this
                         },
                         React.createElement(
-                            "a",
+                            'a',
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 19
+                                    lineNumber: 43
                                 },
                                 __self: this
                             },
-                            "GINO"
+                            'GINO'
                         ),
                         React.createElement(
-                            "small",
+                            'small',
                             {
                                 __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 20
+                                    lineNumber: 44
                                 },
                                 __self: this
                             },
@@ -78,51 +187,32 @@ var Navbar = function (_React$Component) {
                         )
                     ),
                     React.createElement(
-                        "div",
-                        { "class": "header-menu", __source: {
+                        'div',
+                        { 'class': 'header-menu', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 23
+                                lineNumber: 47
                             },
                             __self: this
                         },
-                        React.createElement(
-                            "button",
-                            { "class": "header-btn header-menu-btn", disabled: true, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 24
-                                },
-                                __self: this
-                            },
-                            "Inicio"
-                        ),
-                        React.createElement(
-                            "button",
-                            { "class": "header-btn header-menu-btn", __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 25
-                                },
-                                __self: this
-                            },
-                            "Tienda"
-                        )
+                        headerMenu
                     ),
                     this.props.isAdminLogged && React.createElement(
-                        "div",
-                        { "class": "header-opt", __source: {
+                        'div',
+                        { 'class': 'header-opt', __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 31
+                                lineNumber: 54
                             },
                             __self: this
                         },
                         React.createElement(
-                            "button",
-                            { "class": "header-btn header-close-btn", onClick: this.closeSession, __source: {
+                            'button',
+                            { 'class': 'header-btn header-close-btn', onClick: this.closeSession, __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 32
+                                    lineNumber: 55
                                 },
                                 __self: this
                             },
-                            "Cerrar Sesi\xF3n"
+                            'Cerrar Sesi\xF3n'
                         )
                     )
                 )

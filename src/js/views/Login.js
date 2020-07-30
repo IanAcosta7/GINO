@@ -34,7 +34,6 @@ export default class Login extends React.Component {
                 if (res.ok) {
                     this.props.verifyLog();
                     this.props.changePage('About');
-                    document.location.pathname = '/';
                 }
                 else
                     throw new Error(`Status ${res.status}`);

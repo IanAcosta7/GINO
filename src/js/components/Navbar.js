@@ -12,6 +12,30 @@ export default class Navbar extends React.Component {
     }
 
     render() {
+        let headerMenu = (
+            <React.Fragment>
+                <button className="header-btn header-menu-btn" onClick={e => this.props.changePage('About', e)}>Inicio</button>
+                <button className="header-btn header-menu-btn" onClick={e => this.props.changePage('Exposition', e)}>Tienda</button>
+            </React.Fragment>
+        );
+        
+        if (this.props.page === 'About') {
+            headerMenu = (
+                <React.Fragment>
+                    <button className="header-btn header-menu-btn" onClick={e => this.props.changePage('About', e)} disabled>Inicio</button>
+                    <button className="header-btn header-menu-btn" onClick={e => this.props.changePage('Exposition', e)}>Tienda</button>
+                </React.Fragment>
+            );
+        }
+        else if (this.props.page === 'Exposition') {
+            headerMenu = (
+                <React.Fragment>
+                    <button className="header-btn header-menu-btn" onClick={e => this.props.changePage('About', e)}>Inicio</button>
+                    <button className="header-btn header-menu-btn" onClick={e => this.props.changePage('Exposition', e)} disabled>Tienda</button>
+                </React.Fragment>
+            );
+        }
+
         return (
             <header class="header">
                 <nav class="header-content">
@@ -21,8 +45,7 @@ export default class Navbar extends React.Component {
                     </div>
                     
                     <div class="header-menu">
-                        <button class="header-btn header-menu-btn" disabled>Inicio</button>
-                        <button class="header-btn header-menu-btn">Tienda</button>
+                        {headerMenu}
                     </div>
 
                     {

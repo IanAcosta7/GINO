@@ -9,8 +9,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 import Navbar from './components/Navbar.js';
-import Login from './components/views/Login.js';
-import About from './components/views/About.js';
+import Login from './views/Login.js';
+import About from './views/About.js';
+import Exposition from './views/Exposition.js';
 
 var App = function (_React$Component) {
     _inherits(App, _React$Component);
@@ -22,7 +23,8 @@ var App = function (_React$Component) {
 
         _this.state = {
             isAdminLogged: false,
-            page: About
+            pageComponent: About,
+            page: 'About'
         };
 
         _this.verifyLog = _this.verifyLog.bind(_this);
@@ -40,17 +42,30 @@ var App = function (_React$Component) {
     }, {
         key: 'checkPage',
         value: function checkPage() {
-            if (document.location.pathname === '/admin') this.changePage('Login');
+            switch (document.location.pathname) {
+                case '/admin':
+                    this.changePage('Login');
+                    break;
+                case '/articulos':
+                    this.changePage('Exposition');
+                    break;
+            }
         }
     }, {
         key: 'changePage',
-        value: function changePage(page) {
+        value: function changePage(page, e) {
             var pages = {
                 Login: Login,
-                About: About
+                About: About,
+                Exposition: Exposition
             };
 
-            this.setState({ page: pages[page] });
+            if (page === 'Exposition') window.history.pushState(null, null, '/articulos');else if (page === 'About') window.history.pushState(null, null, '/');
+
+            this.setState({
+                pageComponent: pages[page],
+                page: pages[page].name
+            });
         }
     }, {
         key: 'changeAdminLog',
@@ -94,13 +109,13 @@ var App = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 71
+                        lineNumber: 88
                     },
                     __self: this
                 },
-                React.createElement(Navbar, { changePage: this.changePage, changeAdminLog: this.changeAdminLog, isAdminLogged: this.state.isAdminLogged, __source: {
+                React.createElement(Navbar, { page: this.state.page, changePage: this.changePage, changeAdminLog: this.changeAdminLog, isAdminLogged: this.state.isAdminLogged, __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 72
+                        lineNumber: 89
                     },
                     __self: this
                 }),
@@ -108,18 +123,13 @@ var App = function (_React$Component) {
                     'main',
                     { className: 'main-content', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 74
+                            lineNumber: 91
                         },
                         __self: this
                     },
-                    this.state.page === Login ? React.createElement(this.state.page, { changePage: this.changePage, verifyLog: this.verifyLog, __source: {
+                    React.createElement(this.state.pageComponent, { changePage: this.changePage, verifyLog: this.verifyLog, __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 77
-                        },
-                        __self: this
-                    }) : React.createElement(this.state.page, { changePage: this.changePage, __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 78
+                            lineNumber: 92
                         },
                         __self: this
                     })
@@ -134,7 +144,7 @@ var App = function (_React$Component) {
 ReactDOM.render(React.createElement(App, {
     __source: {
         fileName: _jsxFileName,
-        lineNumber: 87
+        lineNumber: 100
     },
     __self: this
 }), document.getElementById('root'));

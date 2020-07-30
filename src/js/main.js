@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar.js';
-import Login from './components/views/Login.js';
-import About from './components/views/About.js'
+import Login from './views/Login.js';
+import About from './views/About.js';
+import Exposition from './views/Exposition.js';
 
 class App extends React.Component {
 
@@ -8,7 +9,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             isAdminLogged: false,
-            page: About
+            pageComponent: About,
+            page: 'About'
         };
 
         this.verifyLog = this.verifyLog.bind(this);
@@ -22,17 +24,32 @@ class App extends React.Component {
     }
 
     checkPage() {
-        if (document.location.pathname === '/admin')
-            this.changePage('Login');
+        switch (document.location.pathname) {
+            case '/admin':
+                this.changePage('Login');
+                break;
+            case '/articulos':
+                this.changePage('Exposition');
+                break;
+        }
     }
 
-    changePage(page) {
+    changePage(page, e) {
         const pages = {
             Login,
-            About
+            About,
+            Exposition
         }
 
-        this.setState({ page: pages[page] });
+        if (page === 'Exposition')
+            window.history.pushState(null, null, '/articulos');
+        else if (page === 'About')
+            window.history.pushState(null, null, '/');
+
+        this.setState({
+            pageComponent: pages[page],
+            page: pages[page].name
+        });
     }
 
     changeAdminLog(value) {
@@ -69,14 +86,10 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Navbar changePage={this.changePage} changeAdminLog={this.changeAdminLog} isAdminLogged={this.state.isAdminLogged}/>
+                <Navbar page={this.state.page} changePage={this.changePage} changeAdminLog={this.changeAdminLog} isAdminLogged={this.state.isAdminLogged}/>
 
                 <main className="main-content">
-                    {
-                        this.state.page === Login ?
-                        <this.state.page changePage={this.changePage} verifyLog={this.verifyLog}/> :
-                        <this.state.page changePage={this.changePage}/>
-                    }
+                    <this.state.pageComponent changePage={this.changePage} verifyLog={this.verifyLog}/>
                 </main>
             </React.Fragment>
         );
