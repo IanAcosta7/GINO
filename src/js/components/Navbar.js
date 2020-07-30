@@ -14,7 +14,7 @@ export default class Navbar extends React.Component {
     render() {
         return (
             <header class="header">
-                <div class="header-content">
+                <nav class="header-content">
                     <div class="header-logo">
                         <a>GINO</a>
                         <small>{ this.props.isAdminLogged ? 'Administrador' : '' }</small>
@@ -34,7 +34,7 @@ export default class Navbar extends React.Component {
                         )
                     }
                     
-                </div>
+                </nav>
             </header>
         );
     }

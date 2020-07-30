@@ -104,17 +104,26 @@ var App = function (_React$Component) {
                     },
                     __self: this
                 }),
-                this.state.page === Login ? React.createElement(this.state.page, { changePage: this.changePage, verifyLog: this.verifyLog, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 76
+                React.createElement(
+                    'main',
+                    { className: 'main-content', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 74
+                        },
+                        __self: this
                     },
-                    __self: this
-                }) : React.createElement(this.state.page, { changePage: this.changePage, __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 77
-                    },
-                    __self: this
-                })
+                    this.state.page === Login ? React.createElement(this.state.page, { changePage: this.changePage, verifyLog: this.verifyLog, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 77
+                        },
+                        __self: this
+                    }) : React.createElement(this.state.page, { changePage: this.changePage, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 78
+                        },
+                        __self: this
+                    })
+                )
             );
         }
     }]);
@@ -125,7 +134,7 @@ var App = function (_React$Component) {
 ReactDOM.render(React.createElement(App, {
     __source: {
         fileName: _jsxFileName,
-        lineNumber: 85
+        lineNumber: 87
     },
     __self: this
 }), document.getElementById('root'));

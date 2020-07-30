@@ -39,7 +39,7 @@ var Navbar = function (_React$Component) {
                     __self: this
                 },
                 React.createElement(
-                    "div",
+                    "nav",
                     { "class": "header-content", __source: {
                             fileName: _jsxFileName,
                             lineNumber: 17

@@ -21,7 +21,7 @@ var About = function (_React$Component) {
         key: "render",
         value: function render() {
             return React.createElement(
-                "h1",
+                "article",
                 {
                     __source: {
                         fileName: _jsxFileName,
@@ -29,7 +29,16 @@ var About = function (_React$Component) {
                     },
                     __self: this
                 },
-                "About us"
+                React.createElement(
+                    "h1",
+                    { "class": "about-title", __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 5
+                        },
+                        __self: this
+                    },
+                    "About us"
+                )
             );
         }
     }]);
