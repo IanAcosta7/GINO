@@ -89,7 +89,7 @@ class App extends React.Component {
                 <Navbar page={this.state.page} changePage={this.changePage} changeAdminLog={this.changeAdminLog} isAdminLogged={this.state.isAdminLogged}/>
 
                 <main className="main-content">
-                    <this.state.pageComponent changePage={this.changePage} verifyLog={this.verifyLog}/>
+                    <this.state.pageComponent changePage={this.changePage} verifyLog={this.verifyLog} isAdminLogged={this.state.isAdminLogged}/>
                 </main>
             </React.Fragment>
         );

@@ -12,29 +12,49 @@ app.post('/login', (req, res) => {
 
     if (auth) {
 
-        db.getData('users', collection => {
-            const data = Buffer.from(auth.split(' ')[1], 'base64').toString('binary').split(':');
+        const data = Buffer.from(auth.split(' ')[1], 'base64').toString('binary').split(':');
 
-            const [user, pass] = data;
+        const [user, pass] = data;
 
-            collection.findOne({"hash": auth.split(' ')[1]})
-                .then(val => {
-                    if (val) {
-                        token = jwt.sign({
-                            user
-                        }, process.env.JWT_SEED);
+        db.exists('users', {"hash": auth.split(' ')[1]})
+            .then(exists => {
+                if (exists) {
+                    token = jwt.sign({
+                        user
+                    }, process.env.JWT_SEED);
 
-                        res.setHeader('Set-Cookie', [`jwt=${token}`]);
-                        res.writeHead(200, { 'Content-Type': 'text/plain' });
-                        res.end();
-                    }
-                    else
-                        return res.status(403).send(); // FORBIDDEN 
-                })
-                .catch(() => {
-                    return res.status(403).send(); // FORBIDDEN TODO CHECK
-                });
-        });
+                    res.setHeader('Set-Cookie', [`jwt=${token}`]);
+                    res.writeHead(200, { 'Content-Type': 'text/plain' });
+                    res.end();
+                }
+                else
+                    return res.status(403).send(); // FORBIDDEN
+            })
+            .catch(err => console.error(err))
+
+        // db.editTable('users', async collection => {
+        //     const data = Buffer.from(auth.split(' ')[1], 'base64').toString('binary').split(':');
+
+        //     const [user, pass] = data;
+
+        //     await collection.findOne({"hash": auth.split(' ')[1]})
+        //         .then(val => {
+        //             if (val) {
+        //                 token = jwt.sign({
+        //                     user
+        //                 }, process.env.JWT_SEED);
+
+        //                 res.setHeader('Set-Cookie', [`jwt=${token}`]);
+        //                 res.writeHead(200, { 'Content-Type': 'text/plain' });
+        //                 res.end();
+        //             }
+        //             else
+        //                 return res.status(403).send(); // FORBIDDEN 
+        //         })
+        //         .catch(() => {
+        //             return res.status(403).send(); // FORBIDDEN TODO CHECK
+        //         });
+        // });
 
     } else {
         return res.status(401).header('WWW-Authenticate', 'Basic: Access to the staging site').send(); // UNAUTHORIZED

@@ -19,10 +19,45 @@ class Database {
         });
     }
 
-    getData(table, callback) {
+    // editTable(table, callback) {
+    //     const collection = this.client.db('GINO').collection(table);
+
+    //     callback(collection);
+
+
+    // }
+
+    async getAll(table) {
         const collection = this.client.db('GINO').collection(table);
 
-        callback(collection);
+        let cursor = await collection.find({});
+
+        let data = [];
+
+        await cursor.forEach(value => data.push(value));
+
+        return data;
+    }
+
+    async update(table, query, value) {
+        const collection = this.client.db('GINO').collection(table);
+
+        const val = await collection.updateOne(query, value, {});
+
+        return val.modifiedCount;
+    }
+
+    async exists(table, query) {
+        let exists = false;
+
+        const collection = this.client.db('GINO').collection(table);
+
+        const val = await collection.findOne(query);
+        
+        if (val) 
+            exists = !exists;
+
+        return exists;
     }
 }
 

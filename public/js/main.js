@@ -127,7 +127,7 @@ var App = function (_React$Component) {
                         },
                         __self: this
                     },
-                    React.createElement(this.state.pageComponent, { changePage: this.changePage, verifyLog: this.verifyLog, __source: {
+                    React.createElement(this.state.pageComponent, { changePage: this.changePage, verifyLog: this.verifyLog, isAdminLogged: this.state.isAdminLogged, __source: {
                             fileName: _jsxFileName,
                             lineNumber: 92
                         },

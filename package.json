@@ -7,7 +7,7 @@
     "start": "nodemon server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "try2": "set NODE_ENV=development; npx babel --watch src --out-dir ./public",
-    "try": "npx babel --watch src --out-dir ./public" 
+    "try": "npx babel --watch src --out-dir ./public"
   },
   "repository": {
     "type": "git",
