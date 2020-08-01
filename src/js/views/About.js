@@ -32,24 +32,26 @@ export default class About extends React.Component {
     }
 
     getAbout() {
-        const req = new Request(`${window.location.origin}/get_content`, {
-            method: 'GET'
-        });
+        if (this.state.title === '' || this.state.title == '') {
+            const req = new Request(`${window.location.origin}/get_content`, {
+                method: 'GET'
+            });
 
-        fetch(req)
-            .then(res => {
-                if (res.ok)
-                    return res.json();
-            })
-            .then(json => {
-                this.setState({
-                    title: json.title,
-                    description: json.description,
-                    temp_title: json.title,
-                    temp_description: json.description
-                });
-            })
-            .catch(err => console.error(err));
+            fetch(req)
+                .then(res => {
+                    if (res.ok)
+                        return res.json();
+                })
+                .then(json => {
+                    this.setState({
+                        title: json.title,
+                        description: json.description,
+                        temp_title: json.title,
+                        temp_description: json.description
+                    });
+                })
+                .catch(err => console.error(err));
+        }
     }
 
     saveAbout() {

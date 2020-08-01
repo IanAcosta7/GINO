@@ -55,22 +55,24 @@ var About = function (_React$Component) {
         value: function getAbout() {
             var _this2 = this;
 
-            var req = new Request(window.location.origin + '/get_content', {
-                method: 'GET'
-            });
-
-            fetch(req).then(function (res) {
-                if (res.ok) return res.json();
-            }).then(function (json) {
-                _this2.setState({
-                    title: json.title,
-                    description: json.description,
-                    temp_title: json.title,
-                    temp_description: json.description
+            if (this.state.title === '' || this.state.title == '') {
+                var req = new Request(window.location.origin + '/get_content', {
+                    method: 'GET'
                 });
-            }).catch(function (err) {
-                return console.error(err);
-            });
+
+                fetch(req).then(function (res) {
+                    if (res.ok) return res.json();
+                }).then(function (json) {
+                    _this2.setState({
+                        title: json.title,
+                        description: json.description,
+                        temp_title: json.title,
+                        temp_description: json.description
+                    });
+                }).catch(function (err) {
+                    return console.error(err);
+                });
+            }
         }
     }, {
         key: 'saveAbout',
@@ -111,7 +113,7 @@ var About = function (_React$Component) {
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 86
+                        lineNumber: 88
                     },
                     __self: this
                 },
@@ -119,7 +121,7 @@ var About = function (_React$Component) {
                     'article',
                     { className: 'front-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 87
+                            lineNumber: 89
                         },
                         __self: this
                     },
@@ -128,7 +130,7 @@ var About = function (_React$Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 88
+                                lineNumber: 90
                             },
                             __self: this
                         },
@@ -136,7 +138,7 @@ var About = function (_React$Component) {
                             'span',
                             { className: 'title', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 89
+                                    lineNumber: 91
                                 },
                                 __self: this
                             },
@@ -146,7 +148,7 @@ var About = function (_React$Component) {
                             'span',
                             { className: 'subtitle', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 90
+                                    lineNumber: 92
                                 },
                                 __self: this
                             },
@@ -158,7 +160,7 @@ var About = function (_React$Component) {
                     'article',
                     { className: 'about-article', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 93
+                            lineNumber: 95
                         },
                         __self: this
                     },
@@ -167,7 +169,7 @@ var About = function (_React$Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 97
+                                lineNumber: 99
                             },
                             __self: this
                         },
@@ -175,19 +177,19 @@ var About = function (_React$Component) {
                             'form',
                             { className: 'about-section-edit', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 98
+                                    lineNumber: 100
                                 },
                                 __self: this
                             },
                             React.createElement('input', { name: 'temp_title', type: 'text', onChange: this.changeState, value: this.state.temp_title, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 99
+                                    lineNumber: 101
                                 },
                                 __self: this
                             }),
                             React.createElement('textarea', { name: 'temp_description', onChange: this.changeState, value: this.state.temp_description, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 100
+                                    lineNumber: 102
                                 },
                                 __self: this
                             }),
@@ -195,7 +197,7 @@ var About = function (_React$Component) {
                                 'div',
                                 { className: 'about-edit-buttons', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 102
+                                        lineNumber: 104
                                     },
                                     __self: this
                                 },
@@ -203,7 +205,7 @@ var About = function (_React$Component) {
                                     'button',
                                     { 'class': 'form-cancel-btn', type: 'button', onClick: this.cancelAbout, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 103
+                                            lineNumber: 105
                                         },
                                         __self: this
                                     },
@@ -213,7 +215,7 @@ var About = function (_React$Component) {
                                     'button',
                                     { 'class': 'form-accept-btn', type: 'button', onClick: this.saveAbout, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 104
+                                            lineNumber: 106
                                         },
                                         __self: this
                                     },
@@ -226,7 +228,7 @@ var About = function (_React$Component) {
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 110
+                                lineNumber: 112
                             },
                             __self: this
                         },
@@ -234,7 +236,7 @@ var About = function (_React$Component) {
                             'section',
                             { className: 'about-section', __source: {
                                     fileName: _jsxFileName,
-                                    lineNumber: 111
+                                    lineNumber: 113
                                 },
                                 __self: this
                             },
@@ -242,7 +244,7 @@ var About = function (_React$Component) {
                                 'div',
                                 { className: 'about', __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 112
+                                        lineNumber: 114
                                     },
                                     __self: this
                                 },
@@ -250,7 +252,7 @@ var About = function (_React$Component) {
                                     'h2',
                                     { className: 'about-title', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 113
+                                            lineNumber: 115
                                         },
                                         __self: this
                                     },
@@ -262,13 +264,13 @@ var About = function (_React$Component) {
                                             return _this3.setState({ editMode: true });
                                         }, __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 116
+                                            lineNumber: 118
                                         },
                                         __self: this
                                     },
                                     React.createElement('img', { src: 'img/icons/edit-24px.svg', __source: {
                                             fileName: _jsxFileName,
-                                            lineNumber: 116
+                                            lineNumber: 118
                                         },
                                         __self: this
                                     })
@@ -279,7 +281,7 @@ var About = function (_React$Component) {
                                 {
                                     __source: {
                                         fileName: _jsxFileName,
-                                        lineNumber: 119
+                                        lineNumber: 121
                                     },
                                     __self: this
                                 },
