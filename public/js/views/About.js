@@ -107,106 +107,185 @@ var About = function (_React$Component) {
             var _this3 = this;
 
             return React.createElement(
-                'article',
-                { className: 'about-article', __source: {
+                React.Fragment,
+                {
+                    __source: {
                         fileName: _jsxFileName,
                         lineNumber: 86
                     },
                     __self: this
                 },
-                this.state.editMode ? React.createElement(
-                    React.Fragment,
-                    {
-                        __source: {
+                React.createElement(
+                    'article',
+                    { className: 'front-title', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 90
-                        },
-                        __self: this
-                    },
-                    React.createElement(
-                        'form',
-                        {
-                            __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 91
-                            },
-                            __self: this
-                        },
-                        React.createElement('input', { name: 'temp_title', type: 'text', onChange: this.changeState, value: this.state.temp_title, __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 92
-                            },
-                            __self: this
-                        }),
-                        React.createElement('textarea', { name: 'temp_description', onChange: this.changeState, value: this.state.temp_description, __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 93
-                            },
-                            __self: this
-                        }),
-                        React.createElement(
-                            'button',
-                            { 'class': 'form-cancel-btn', type: 'button', onClick: this.cancelAbout, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 94
-                                },
-                                __self: this
-                            },
-                            'Cancelar'
-                        ),
-                        React.createElement(
-                            'button',
-                            { 'class': 'form-accept-btn', type: 'button', onClick: this.saveAbout, __source: {
-                                    fileName: _jsxFileName,
-                                    lineNumber: 95
-                                },
-                                __self: this
-                            },
-                            'Guardar'
-                        )
-                    )
-                ) : React.createElement(
-                    React.Fragment,
-                    {
-                        __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 100
+                            lineNumber: 87
                         },
                         __self: this
                     },
                     React.createElement(
                         'h1',
-                        { className: 'about-title', __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 101
-                            },
-                            __self: this
-                        },
-                        this.state.title
-                    ),
-                    ' ',
-                    this.props.isAdminLogged && React.createElement(
-                        'button',
-                        { className: 'edit-btn', onClick: function onClick() {
-                                return _this3.setState({ editMode: true });
-                            }, __source: {
-                                fileName: _jsxFileName,
-                                lineNumber: 101
-                            },
-                            __self: this
-                        },
-                        'X'
-                    ),
-                    React.createElement(
-                        'p',
                         {
                             __source: {
                                 fileName: _jsxFileName,
-                                lineNumber: 102
+                                lineNumber: 88
                             },
                             __self: this
                         },
-                        this.state.description
+                        React.createElement(
+                            'span',
+                            { className: 'title', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 89
+                                },
+                                __self: this
+                            },
+                            'Titulo'
+                        ),
+                        React.createElement(
+                            'span',
+                            { className: 'subtitle', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 90
+                                },
+                                __self: this
+                            },
+                            'Un subtitulo mas largo'
+                        )
+                    )
+                ),
+                React.createElement(
+                    'article',
+                    { className: 'about-article', __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 93
+                        },
+                        __self: this
+                    },
+                    this.state.editMode ? React.createElement(
+                        React.Fragment,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 97
+                            },
+                            __self: this
+                        },
+                        React.createElement(
+                            'form',
+                            { className: 'about-section-edit', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 98
+                                },
+                                __self: this
+                            },
+                            React.createElement('input', { name: 'temp_title', type: 'text', onChange: this.changeState, value: this.state.temp_title, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 99
+                                },
+                                __self: this
+                            }),
+                            React.createElement('textarea', { name: 'temp_description', onChange: this.changeState, value: this.state.temp_description, autocorrect: 'off', autocapitalize: 'off', spellcheck: 'false', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 100
+                                },
+                                __self: this
+                            }),
+                            React.createElement(
+                                'div',
+                                { className: 'about-edit-buttons', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 102
+                                    },
+                                    __self: this
+                                },
+                                React.createElement(
+                                    'button',
+                                    { 'class': 'form-cancel-btn', type: 'button', onClick: this.cancelAbout, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 103
+                                        },
+                                        __self: this
+                                    },
+                                    'Cancelar'
+                                ),
+                                React.createElement(
+                                    'button',
+                                    { 'class': 'form-accept-btn', type: 'button', onClick: this.saveAbout, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 104
+                                        },
+                                        __self: this
+                                    },
+                                    'Guardar'
+                                )
+                            )
+                        )
+                    ) : React.createElement(
+                        React.Fragment,
+                        {
+                            __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 110
+                            },
+                            __self: this
+                        },
+                        React.createElement(
+                            'section',
+                            { className: 'about-section', __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 111
+                                },
+                                __self: this
+                            },
+                            React.createElement(
+                                'div',
+                                { className: 'about', __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 112
+                                    },
+                                    __self: this
+                                },
+                                React.createElement(
+                                    'h2',
+                                    { className: 'about-title', __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 113
+                                        },
+                                        __self: this
+                                    },
+                                    this.state.title
+                                ),
+                                this.props.isAdminLogged && React.createElement(
+                                    'button',
+                                    { className: 'edit-btn', onClick: function onClick() {
+                                            return _this3.setState({ editMode: true });
+                                        }, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 116
+                                        },
+                                        __self: this
+                                    },
+                                    React.createElement('img', { src: 'img/icons/edit-24px.svg', __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 116
+                                        },
+                                        __self: this
+                                    })
+                                )
+                            ),
+                            React.createElement(
+                                'p',
+                                {
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 119
+                                    },
+                                    __self: this
+                                },
+                                this.state.description
+                            )
+                        )
                     )
                 )
             );

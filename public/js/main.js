@@ -127,12 +127,21 @@ var App = function (_React$Component) {
                         },
                         __self: this
                     },
-                    React.createElement(this.state.pageComponent, { changePage: this.changePage, verifyLog: this.verifyLog, isAdminLogged: this.state.isAdminLogged, __source: {
-                            fileName: _jsxFileName,
-                            lineNumber: 92
+                    React.createElement(
+                        'div',
+                        { className: 'main-' + this.state.page.toLowerCase(), __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 92
+                            },
+                            __self: this
                         },
-                        __self: this
-                    })
+                        React.createElement(this.state.pageComponent, { changePage: this.changePage, verifyLog: this.verifyLog, isAdminLogged: this.state.isAdminLogged, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 93
+                            },
+                            __self: this
+                        })
+                    )
                 )
             );
         }
@@ -144,7 +153,7 @@ var App = function (_React$Component) {
 ReactDOM.render(React.createElement(App, {
     __source: {
         fileName: _jsxFileName,
-        lineNumber: 100
+        lineNumber: 102
     },
     __self: this
 }), document.getElementById('root'));

@@ -83,27 +83,46 @@ export default class About extends React.Component {
 
     render() {
         return (
-            <article className="about-article">
-                {
-                    this.state.editMode ?
-                    (
-                        <React.Fragment>
-                            <form>
-                                <input name="temp_title" type="text" onChange={this.changeState} value={this.state.temp_title}></input>
-                                <textarea name="temp_description" onChange={this.changeState} value={this.state.temp_description}></textarea>
-                                <button class="form-cancel-btn" type="button" onClick={this.cancelAbout}>Cancelar</button>
-                                <button class="form-accept-btn" type="button" onClick={this.saveAbout}>Guardar</button>
-                            </form>
-                        </React.Fragment>
-                    ) : 
-                    (
-                        <React.Fragment>
-                            <h1 className="about-title">{ this.state.title }</h1> {this.props.isAdminLogged && <button className="edit-btn" onClick={() => this.setState({ editMode: true })}>X</button>}
-                            <p>{ this.state.description }</p>
-                        </React.Fragment>
-                    )
-                }
-            </article>
+            <React.Fragment>
+                <article className="front-title">
+                    <h1>
+                        <span className="title">Titulo</span>
+                        <span className="subtitle">Un subtitulo mas largo</span>
+                    </h1>
+                </article>
+                <article className="about-article">
+                    {
+                        this.state.editMode ?
+                        (
+                            <React.Fragment>
+                                <form className="about-section-edit">
+                                    <input name="temp_title" type="text" onChange={this.changeState} value={this.state.temp_title} autocorrect="off" autocapitalize="off" spellcheck="false"></input>
+                                    <textarea name="temp_description" onChange={this.changeState} value={this.state.temp_description} autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+
+                                    <div className="about-edit-buttons">
+                                        <button class="form-cancel-btn" type="button" onClick={this.cancelAbout}>Cancelar</button>
+                                        <button class="form-accept-btn" type="button" onClick={this.saveAbout}>Guardar</button>
+                                    </div>
+                                </form>
+                            </React.Fragment>
+                        ) : 
+                        (
+                            <React.Fragment>
+                                <section  className="about-section">
+                                    <div className="about">
+                                        <h2 className="about-title">{ this.state.title }</h2>
+                                        {
+                                            this.props.isAdminLogged &&
+                                            <button className="edit-btn" onClick={() => this.setState({ editMode: true })}><img src="img/icons/edit-24px.svg"></img></button>
+                                        }
+                                    </div>
+                                    <p>{ this.state.description }</p>
+                                </section>
+                            </React.Fragment>
+                        )
+                    }
+                </article>
+            </React.Fragment>
         );
     }
 }
